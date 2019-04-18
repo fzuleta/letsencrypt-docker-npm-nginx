@@ -2,6 +2,7 @@ FROM nginx:latest
 
 ARG DOMAIN
 ARG NPM_PORT
+ARG DOCKER_PORT
 
 COPY ./default_pre.conf /default_pre.conf
 COPY ./default.conf /default.conf
@@ -11,6 +12,7 @@ RUN mkdir /etc/letsencrypt && \
 mkdir /data && \
 mkdir /data/letsencrypt && \
 sed -i "s/@NPM_PORT@/${NPM_PORT}/g" /default.conf && \
+sed -i "s/@DOCKER_PORT@/${DOCKER_PORT}/g" /default.conf && \
 sed -i "s/@DOMAIN@/${DOMAIN}/g" /default.conf && \
 chmod +x /entrypoint.sh
 

@@ -9,6 +9,7 @@ services:
       args:
         - DOMAIN=domain.com
         - NPM_PORT=4873
+        - DOCKER_PORT=5000
       dockerfile: ./nginx.dockerfile
     ports:
       - 80:80

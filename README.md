@@ -5,12 +5,17 @@ Make sure you have a domain(or subdomain) and SSH access to an instance. This wo
 ## Steps
 1. Set in `docker-compose.yml` and `ssl_gen.sh` the **DOMAIN=my.registry.com** on the Nginx args.
 2. Delete all **DELETE_ME.yml** files in `certs`, `certs-data`, `data`, `verdaccio/storage` (keep folders).
-    `rm certs/DELETE_ME.yml && rm certs-data/DELETE_ME.yml && rm data/DELETE_ME.yml && rm verdaccio/storage/DELETE_ME.yml`
+    ```
+    rm certs/DELETE_ME.yml && rm certs-data/DELETE_ME.yml && rm data/DELETE_ME.yml && rm verdaccio/storage/DELETE_ME.yml
+    ```
 3. `docker-compose up -d`
 4. `chmod +x *.sh && ./ssl_gen.sh`  
 5. After it succeeds, start it with `docker-compose restart`
 
-You should be able to access the registry via https://domain.com/npm and https://domain.com/docker
+You should be able to access the registry via
+
+    - npm: https://domain.com/npm 
+    - docker: https://domain.com/
 
 # htpasswd for adding users to registry
 Verdaccio uses htpasswd for user management
