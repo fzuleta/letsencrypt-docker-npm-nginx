@@ -1,6 +1,11 @@
 # Storage for all packages
 storage: /verdaccio/storage
 
+https:
+    cert: "/etc/letsencrypt/live/domain.com/fullchain.pem"
+    key: "/etc/letsencrypt/live/domain.com/privkey.pem"
+    ca: "/etc/letsencrypt/live/domain.com/chain.pem"
+
 web:
   # WebUI is enabled as default, if you want disable it, just uncomment this line
   #enable: false
@@ -10,6 +15,8 @@ web:
 auth:
   htpasswd:
     file: /verdaccio/conf/htpasswd
+    # disable user registration
+    max_users: -1
     
 listen:
   - 0.0.0.0:4873

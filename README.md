@@ -2,19 +2,19 @@
 
 Make sure you have a domain(or subdomain) and SSH access to an instance. This works well under a DigitalOcean's Ubuntu with Docker and Docker Compose installed.
 
-## Steps
-1. Set in `docker-compose.yml` and `ssl_gen.sh` the **DOMAIN=my.registry.com** on the Nginx args.
+## Steps (run as root)
+1. Set in **docker-compose.yml**, **ssl_gen.sh** and **./verdaccio/conf/conf.yaml** the **DOMAIN=domain.com** to your domain.
 2. Delete all **DELETE_ME.yml** files in `certs`, `certs-data`, `data`, `verdaccio/storage` (keep folders).
     ```
     rm certs/DELETE_ME.yml && rm certs-data/DELETE_ME.yml && rm data/DELETE_ME.yml && rm verdaccio/storage/DELETE_ME.yml
     ```
-3. `docker-compose up -d`
-4. `chmod +x *.sh && ./ssl_gen.sh`  
-5. After it succeeds, start it with `docker-compose restart`
+4. `docker-compose up -d`
+5. `chmod +x *.sh && ./ssl_gen.sh`  
+6. After it succeeds, start it with `docker-compose restart`
 
 You should be able to access the registry via
 
-    - npm: https://domain.com/npm 
+    - npm: https://domain.com:4873 
     - docker: https://domain.com/
 
 # htpasswd for adding users to registry
