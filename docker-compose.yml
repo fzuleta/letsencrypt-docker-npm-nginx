@@ -7,6 +7,8 @@ services:
     build:
       context: ./nginx
       args:
+        - REGISTRY_USER=user
+        - REGISTRY_PASSWORD=pass
         - DOMAIN=domain.com
         - DOCKER_PORT=5000
       dockerfile: ./nginx.dockerfile
